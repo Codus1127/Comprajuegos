@@ -1,0 +1,10 @@
+.game-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.game-list img {
+  width: 200px;
+}
