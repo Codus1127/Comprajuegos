@@ -23,5 +23,18 @@ module.exports = {
     res
       .status(201)
       .send({ message: 'Logged in', user: req.session.user, loggedIn: true })
+  },
+  async login(req, res) {
+    const db = req.app.get('db')
+    const {email, password} = req.body
+
+    // check if user exists (and the hash)
+    const user = await db.find_user(email)
+    // if user doesn't exist, send appropriate response
+    if (!user[0]) return res.status(200).send({message: 'Email not found'})
+    // hash password and compare
+    // if hashes don't match, send appropriate response
+    // if they do match, add user to sessions
+    // send session.user back to front end
   }
 }
